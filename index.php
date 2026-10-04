@@ -61,7 +61,75 @@ $produtos = mysqli_query($conexao, "SELECT * FROM produtos");
             <button type="submit">Cadastrar</button>
 
         </form>
+        
+<div>
 
+            <h2>Produtos cadastrados</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Validade</th>
+                    <th>Ações</th>
+                </tr>
+
+                <?php while ($produto = mysqli_fetch_assoc($produtos)) { ?>
+
+                    <tr>
+
+                        <td>
+                            <?php echo $produto["id"] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $produto["nome"] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $produto["categoria"] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $produto["descricao"] ?>
+                        </td>
+
+                        <td>
+                            R$ <?php echo $produto["preco"] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $produto["quantidade"] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $produto["validade"] ?>
+                        </td>
+
+                        <td>
+
+                            <a href="public/editar.php?id=<?php echo $produto["id"] ?>">
+                                Editar
+                            </a>
+
+                            <a href="public/excluir.php?id=<?php echo $produto["id"] ?>">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                <?php } ?>
+
+            </table>
+
+        </div>
 
        
 
